@@ -4,8 +4,21 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+// db connection SQL
+var mysql = require('mysql')
+var DBConnect = mysql.createConnection({
+  host: 'localhost',
+  user: 'dbuser',
+  password: 's3kreee7',
+  database: 'my_db'
+})
+
+DBConnect.connect()
+// db connection END
+
+// API's
+var indexRouter = require('./routes/index')(DBConnect);
+var usersRouter = require('./routes/users')(DBConnect);
 
 var app = express();
 
