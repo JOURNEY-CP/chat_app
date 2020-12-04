@@ -12,6 +12,6 @@ const index= dbConnect => {
     return {
         sampleMethod,
     };
-}
+
 
 module.exports = index;

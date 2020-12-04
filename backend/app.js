@@ -8,9 +8,9 @@ var logger = require('morgan');
 var mysql = require('mysql')
 var DBConnect = mysql.createConnection({
   host: 'localhost',
-  user: 'dbuser',
-  password: 's3kreee7',
-  database: 'my_db'
+  user: '',
+  password: '',
+  database: 'chat_app'
 })
 
 DBConnect.connect()
