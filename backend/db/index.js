@@ -2,7 +2,7 @@ const index= dbConnect => {
     const sampleMethod=(args)=>{
         return new Promise((resolve, reject) => {
             const query = `SELECT * FROM sample where name=${dbConnect.escape("test")};`;
-            dbClient.query(qs, function(error, results, _fields) {
+            dbConnect.query(qs, function(error, results, _fields) {
                 if (error) return reject('Failed');
                 resolve(results);
             });
@@ -12,6 +12,6 @@ const index= dbConnect => {
     return {
         sampleMethod,
     };
-
+};
 
 module.exports = index;

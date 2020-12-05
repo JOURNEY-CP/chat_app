@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
-const indexRouter = dbClient => {
-  indexDb = indexDb(dbClient);
+var indexDb = require('../db/index');
+let indexDbConnect;
+const indexRouter = DBConnect => {
+  indexDbConnect = indexDb(DBConnect);
   return router;
 };
 

@@ -4,11 +4,14 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+const dotenv = require('dotenv');
+dotenv.config();
+
 // db connection SQL
 var mysql = require('mysql')
 var DBConnect = mysql.createConnection({
   host: 'localhost',
-  user: '',
+  user: 'root',
   password: '',
   database: 'chat_app'
 })
@@ -19,6 +22,7 @@ DBConnect.connect()
 // API's
 var indexRouter = require('./routes/index')(DBConnect);
 var usersRouter = require('./routes/users')(DBConnect);
+var apiRouter = require('./routes/api')(DBConnect);
 
 var app = express();
 
@@ -34,7 +38,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
+app.use('/api',apiRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

@@ -1,12 +1,12 @@
 var express = require('express');
 var router = express.Router();
 
-const usersRouter = DBConnect => {
+const moneyRouter = DBConnect => {
   return router;
 };
 
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+  res.send("hello");
 });
 
-module.exports = usersRouter;
+module.exports = moneyRouter;
