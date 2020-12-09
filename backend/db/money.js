@@ -18,9 +18,24 @@ const money = dbConnect => {
             });
         });
     }
+    const getAccountDetails= id =>{
+        return new Promise((resolve, reject) => {
+            const query = `SELECT id,user_id,balance from money_account
+                    WHERE id=${dbConnect.escape(id)}`;
+            dbConnect.query(query,(error, results, _fields) => {
+                if (error) {
+                    console.log(error);
+                    reject('Failed');
+                    return;
+                }
+                resolve(results);
+            });
+        });
+    }
 
     return {
-        createNewAccount
+        createNewAccount,
+        getAccountDetails,
     };
 };
 

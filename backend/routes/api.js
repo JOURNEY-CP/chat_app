@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const moneyRouterModule=require('./api/money');
+const indexRouterModule=require('./index');
 
 const routerModules = {
     '/money': moneyRouterModule,
